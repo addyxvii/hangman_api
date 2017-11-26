@@ -1,30 +1,22 @@
 const express = require('express');
 const router = express.Router();
 
+const words = require('../..controllers/words_controller.js');
 
-router.get('/', function(req, res, next) {
-  res.send('hello');
-});
 
-router.get('/:word_id', function(req, res, next){
+router.post('/', words.create);
 
-});
 
-router.post('/', function(req, res, next){
-  res.send(200);
-});
+router.get('/', words.findAll);
 
-router.put('/:word_id', function(req, res, next){
-  res.send(200)
-});
 
-router.delete('/:word_id', function(req, res, next){
-  res.send(200);
-});
+router.get('/:wordId', words.findOne);
 
-// router.get('/', (req, res) => {
-//   console.log("here")
-//    res.send(200).json({message: "hello"})
-//  });
+
+router.put('/:wordId', words.update);
+
+
+router.delete('/:wordId', words.delete);
+
 
 module.exports = router; 
